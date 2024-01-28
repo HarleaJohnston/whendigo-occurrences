@@ -1,0 +1,590 @@
+@font-face {
+  font-family: HeaderFont;
+  src: url(./Fonts/OldNewspaperTypes.ttf);
+}
+
+@font-face {
+  font-family: Font;
+  src: url(./Fonts/Spotlight\ Typewriter\ NC.ttf)
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("./imgs/BackgroundImg.png");
+  background-position: center;
+  background-size: cover;
+}
+
+
+@media (max-width: 768px) {
+  .ContentBox, .ContentBox2, .Row, .Row2, .Row3, .Box, .Box2, .Box3 {
+    width: 90%;
+    margin: 2% auto;
+  }
+
+  .Row2, .Row3 {
+    padding: 2px 10px;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .Center2 {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .Box, .Box2, .Box3 {
+    width: 100%;
+  }
+}
+
+.bannerSize{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.navColor{
+  background-color: #766B4E;
+  color: #CBC4AE;
+}
+
+.ContentBox{
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  background-color: #E5E1CF;
+  align-items: center;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  position: relative;
+  margin-top: -24px;
+  box-shadow: -20px 0 35px -25px black, 20px 0 35px -25px black;
+}
+
+.ContentBox2{
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  background-color: #E5E1CF;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  max-width: 1200px;
+  margin-top: -24px;
+  box-shadow: -20px 0 35px -25px black, 20px 0 35px -25px black;
+}
+
+.Center{
+  display: flex;
+  justify-content: center;
+}
+
+.Center2{
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  margin-left: 15%;
+  margin-right: 10%;
+}
+
+.Column{
+  display: flex;
+  flex-direction: column;
+}
+
+.Column2{
+  display: flex;
+  flex-direction: column;
+}
+
+.Row{
+  display: flex;
+  flex-direction: row;
+  border-radius: 7px;
+  margin: 0 auto; 
+}
+
+.Row2{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #CBAF3D;
+  border-radius: 15px;
+  padding: 2px 30px;
+  width: 70%;
+}
+
+.Row3{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 15px;
+  padding: 2px 30px;
+  width: 100%;
+}
+
+.ImgSize{
+  width: 600px;
+}
+
+.Box{
+  display: flex;
+  flex-direction: column;
+  margin: 2%;
+  width: 500px
+}
+
+.Box2{
+  margin: 2%;
+  padding: 2%;
+  width: 600px;
+  background-color: #766B4E;
+  border-radius: 7%;
+}
+
+.Box3{
+  display: flex;
+  flex-direction: column;
+  margin: 2%;
+  width: 600px
+}
+
+.Box > *,
+.Box2 > *,
+.Box3 > * {
+  max-width: 100%; 
+}
+
+.Box > *,
+.Box2 > *,
+.Box3 > * {
+  width: 100%;
+}
+
+@media (max-width: 1300px) {
+  .ContentBox {
+    max-width: 90%; 
+  }
+
+  .Box, .Box2, .Box3 {
+    width: 100%;
+    margin: 2% auto;
+  }
+
+  .Box2 {
+    padding: 5%;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .ContentBox {
+    max-width: 90%; 
+  }
+
+  .Box, .Box2, .Box3 {
+    width: 100%;
+    margin: 2% auto;
+  }
+
+  .Box2 {
+    padding: 5%;
+  }
+}
+
+@media (max-width: 576px) {
+  .Box, .Box2, .Box3 {
+    width: 100%;
+  }
+  .Box img,
+  .Box2 img,
+  .Box3 img {
+    display: none;
+  }
+}
+
+
+.spacer{
+  margin: 20px;
+}
+
+.spacer2{
+  margin: 100px;
+}
+.spacer3{
+  margin: 90px;
+}
+
+.spacer4{
+  margin: 40px;
+}
+
+.spacer5{
+  margin-top: 150px;
+}
+
+.FontSize{
+  font-size: 50px;
+  font-family: HeaderFont;
+}
+
+.FontSize2{
+  font-size: 20px;
+  font-family: courier;
+}
+
+.HeaderFont{
+  font-family: HeaderFont;
+}
+
+.Font{
+  font-family: Font;
+}
+
+.Profile{
+background-color: #FDF8E8;
+width: 70%;
+justify-content: left;
+}
+
+.Padding{
+  padding: 10px;
+}
+
+.Padding2{
+padding: 2px 5px;
+}
+
+.right{
+  display: flex;
+  justify-content: left !important;
+}
+
+.PostBox{
+  display: flex;
+  background-color: #F1EFED;
+  border-radius: 7px;
+  width: 75%;
+  margin-bottom: 20px;
+  padding: 5px;
+  flex-direction: column;
+  box-shadow: -20px 0 35px -25px black, 20px 0 35px -25px black;
+}
+
+.Left{
+  display: flex;
+}
+
+.Icon{
+  margin: 10px;
+}
+
+.PostBox2{
+  display: flex;
+  background-color: #F1EFED;
+  border-radius: 7px;
+  width: 150%;
+  margin-bottom: 20px;
+  padding: 5px;
+  flex-direction: column;
+  box-shadow: -20px 0 35px -25px black, 20px 0 35px -25px black;
+}
+
+.SignLogBox{
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  background-color: #F1EFED;
+  align-items: center;
+  text-align: center;
+  border-radius: 7px;
+  width: 50%;
+  margin: 0 auto; 
+}
+
+ul.nav li a, ul.nav li a:visited {
+  color: white !important;
+  }
+  
+  ul.nav li a:hover, ul.nav li a:active {
+  color: wheat !important;
+  }
+  
+  ul.nav li.active a {
+  color: brown !important;
+  }
+
+  .imgSize{
+    height: 75%;
+    width: 55%;
+  }
+  .disabledImg {
+    opacity: 0.5; 
+    pointer-events: none; 
+   
+  }
+
+/* Profile CSS */
+/*Found the styling with a free to use profile styling webside here -> https://www.sliderrevolution.com/resources/bootstrap-profile/*/
+
+.left {
+  left: 25px;
+}
+
+.right {
+  right: 25px;
+}
+
+.center {
+  text-align: center;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 25px;
+}
+
+#gradient {
+  background: #999955;
+  background-image: linear-gradient(#DAB046 20%, #D73B25 20%, #D73B25 40%, #C71B25 40%, #C71B25 60%, #961A39 60%, #961A39 80%, #601035 80%);
+  width: 100%;
+  height: 150px;
+}
+
+.CenteredCard {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  transform: translate(-50%, -50%);
+}
+
+#gradient:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  margin-top: -67.5px;
+  margin-left: -270px;
+  padding-left: 20px;
+  border-radius: 5px;
+  width: 520px;
+  height: 275px;
+  z-index: -1;
+}
+
+
+#card {
+  width: 750px;
+  height: 225px;
+  padding: 25px;
+  padding-top: 0;
+  padding-bottom: 0;
+  background: #E9E2D0;
+  box-shadow: -20px 0 35px -25px black, 20px 0 35px -25px black;
+  z-index: 5;
+  margin-top: -370px;
+}
+
+#card h1 {
+  font-family: HeaderFont;
+  color: #333;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 90pt;
+}
+
+
+#card span {
+  font-family: courier;
+}
+
+@media (max-width: 992px) {
+  #card {
+    width: 90%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #card h1 {
+    font-size: 70pt;
+  }
+}
+
+@media (max-width: 756px) {
+  #card {
+    width: 80%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #card h1 {
+    font-size: 70pt;
+  }
+
+}
+
+@media (max-width: 567px) {
+  #card {
+    width: 90%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #card h1 {
+    font-size: 60pt;
+  }
+
+}
+
+@media (max-width: 470px) {
+  #card {
+    width: 80%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #card h1 {
+    font-size: 50pt;
+  }
+
+}
+
+#gradient2 {
+  background: #999955;
+  background-image: linear-gradient(#DAB046 20%, #D73B25 20%, #D73B25 40%, #C71B25 40%, #C71B25 60%, #961A39 60%, #961A39 80%, #601035 80%);
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 100%;
+  height: 150px;
+}
+
+#gradient2:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  margin-top: -67.5px;
+  margin-left: -270px;
+  padding-left: 20px;
+  border-radius: 5px;
+  width: 520px;
+  height: 275px;
+  z-index: -1;
+}
+
+#card2 {
+  position: absolute;
+  width: 750px;
+  height: 325px;
+  padding: 25px;
+  padding-top: 0;
+  padding-bottom: 0;
+  left: 50%;
+  top: 105px;
+  margin-left: -350px;
+  background: #E9E2D0;
+  box-shadow: -20px 0 35px -25px black, 20px 0 35px -25px black;
+  z-index: 5;
+  margin-top: -120px;
+
+}
+
+#card2 img {
+  width: 300px;
+  float: left;
+  border-radius: 180px;
+  margin-right: 20px;
+}
+
+#card2 h2 {
+  font-family: courier;
+  color: #333;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 15pt;
+}
+
+#card2 h1 {
+  font-family: HeaderFont;
+  color: #333;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 90pt;
+}
+
+#card2 p {
+  font-family: courier;
+  color: #555;
+  font-size: 13px;
+}
+
+#card2 span {
+  font-family: courier;
+}
+
+@media (max-width: 992px) {
+  #card2 {
+    width: 80%;
+    max-width: 600px;
+  }
+
+  #card2 h2 {
+    font-size: 13pt;
+  }
+
+  #card2 p {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+  #card2 {
+    width: 80%;
+    max-width: 600px;
+  }
+
+  #card2 h2 {
+    font-size: 13pt;
+  }
+
+  #card2 p {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 567px) {
+  #card2 {
+    width: 80%;
+    max-width: 600px;
+  }
+
+  #card2 h2 {
+    font-size: 13pt;
+  }
+
+  #card2 p {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 470px) {
+  #card2 {
+    width: 80%;
+    max-width: 600px;
+  }
+
+  #card2 h2 {
+    font-size: 13pt;
+  }
+
+  #card2 p {
+    font-size: 11px;
+  }
+}

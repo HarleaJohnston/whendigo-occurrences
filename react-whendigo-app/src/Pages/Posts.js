@@ -6,9 +6,7 @@ const Posts = () => {
   const [items, setPosts] = useState([]);
   const [itemImg, setItemImg] = useState("");
   const userId = sessionStorage.getItem('userId');
-  const [comment, setComment] = useState("");
   const [user, setUser] = useState(null);
-  const [commentsMap, setCommentsMap] = useState({});
 
   useEffect(() => {
     console.log(items);
@@ -52,27 +50,6 @@ const Posts = () => {
       });
   }, []);
 
-  useEffect(() => {
-    const fetchCommentsForPosts = async () => {
-      try {
-        const updatedCommentsMap = {};
-
-        await Promise.all(
-          items.map(async (item) => {
-            const response = await fetch(`http://localhost:3666/post/${item._id}/comments`);
-            const commentsData = await response.json();
-            updatedCommentsMap[item._id] = commentsData;
-          })
-        );
-
-        setCommentsMap(updatedCommentsMap);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchCommentsForPosts();
-  }, [items]);
 
 
   const handleLike = (postId, likeStatus) => {
@@ -190,41 +167,6 @@ const Posts = () => {
     }
   };
 
-  const handleComment = async (postId) => {
-    if (!userId) {
-      alert("Please log in to comment.");
-      return;
-    }
-  
-    try {
-      const response = await fetch(`http://localhost:3666/post/${postId}/comment`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId, userName: user.UserName, text: comment, postId }),
-      });
-  
-      const data = await response.json();
-  
-      if (data.success) {
-        const updatedPosts = items.map((post) => {
-          if (post._id === postId) { 
-            const updatedComments = [...post.comments, { userId, userName: user.UserName, text: comment }];
-            return { ...post, comments: updatedComments };
-          }
-          return post;
-        });
-        setPosts(updatedPosts);
-        setComment("");
-        window.location.reload();
-      } else {
-        console.error(data.error);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   useEffect(() => {
     if (items && items.postImg) {
@@ -245,7 +187,7 @@ const Posts = () => {
         <div className="spacer"></div>
         <div id="gradient"></div>
           <div className="CenteredCard">
-            <div id="card">
+            <div>
             <div className='spacer3'></div>
             <h1>Post Feed</h1>
           </div>
@@ -289,33 +231,6 @@ const Posts = () => {
               </span>
               )}
               </span>
-                <div className="spacer"></div>
-                <span>
-                <input type="text" placeholder="Write a comment..." value={comment} onChange={(e) => setComment(e.target.value)} />
-                <button onClick={() => handleComment(item._id, user.UserName)} disabled={!userId}>
-                  Add Comment
-                </button>
-                <div className="Comments">
-                {commentsMap[item._id] && commentsMap[item._id].length > 0 ? (
-                  commentsMap[item._id].map((comment) => (
-                    <div key={comment._id} className="Comment">
-                      <p className="Left">
-                        <strong>
-                          {comment.userId === userId ? (
-                            <a href={`/userProfile`}>{comment.userName}</a>
-                          ) : (
-                            <a href={`/user/${comment.userId}`}>{comment.userName}</a>
-                          )}
-                        </strong>
-                        : {comment.text}
-                        </p>
-                      </div>
-                    ))
-                    ) : (
-                      <p>No comments yet.</p>
-                    )}
-                  </div>
-                </span>
             </div>
           );
         })}

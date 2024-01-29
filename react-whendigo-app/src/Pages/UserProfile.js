@@ -10,9 +10,8 @@ function UserProfile() {
   const [items, setItems] = useState([]);
   const [itemImg, setItemImg] = useState("");
   const userId = sessionStorage.getItem('userId');
-  const isAdmin = user && user.Key === 'a84640d6-1c42-41aa-a53f-783edd2b4e64'; 
+  const isAdmin = user && user.Key === '10be784e-104a-4f16-9b3e-07919101fcfa'; 
   const [allUsers, setAllUsers] = useState([]);
-  const [loggedInUserFriendedBy, setLoggedInUserFriendedBy] = useState([]);
   const loggedInUserId = sessionStorage.getItem('userId');
   const [bookmarkDropdownOpen, setBookmarkDropdownOpen] = useState(false);
 
@@ -100,17 +99,6 @@ function UserProfile() {
     });
   }, []);
 
-  useEffect(() => {
-    if (loggedInUserId && allUsers && allUsers.length > 0) {
-      const friendedBy = [];
-      for (const user of allUsers) {
-        if (user.Friends.includes(loggedInUserId)) {
-          friendedBy.push(user.UserName);
-        }
-      }
-      setLoggedInUserFriendedBy(friendedBy);
-    }
-  }, [loggedInUserId, allUsers]);
   
   const handleDeletePost = (postId) => {
     if (window.confirm('Are you sure you want to delete this post?')) {
@@ -149,26 +137,7 @@ function UserProfile() {
                 <p>Bio: {user.Bio}</p>
                 <Link to='/updateUser'>
                     <button>Edit Profile</button>
-                  </Link>
-                  <div>
-                  {loggedInUserFriendedBy.length > 0 && (
-                    <div>
-                      <h3>Friended By:</h3>
-                        {loggedInUserFriendedBy.map((username, index) => {
-                          const user = allUsers.find(user => user.UserName === username);
-                          if (user) {
-                            return (
-                              <li key={index}>
-                                <Link to={`/user/${user._id}`}>{username}</Link>
-                              </li>
-                            );
-                          } else {
-                            return null; 
-                          }
-                        })}
-                    </div>
-                  )}
-                  </div>
+                </Link>
                 </div>
                 </div>
               </div>

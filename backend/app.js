@@ -1,11 +1,8 @@
 const express = require("express");
 const session = require("express-session"); 
 const cors = require("cors");
-const { v4: uuidv4 } = require('uuid');
 const multer = require('multer');
 const sanitize = require('sanitize-filename');
-
-
 
 
 const dal = require ("./webDal").DAL;
@@ -264,84 +261,6 @@ app.get("/user/:id", async (req, res) => {
   }
 });
 
-app.post("/post/:id/comment", async (req, res) => {
-  const postId = req.params.id;
-  const userId = req.body.userId;
-  const userName = req.body.userName; 
-  const commentText = req.body.text; 
-
-  try {
-    const post = await dal.getPostById(postId);
-
-    if (!post) {
-      return res.status(404).json({ success: false, error: "Post not found" });
-    }
-
-    const savedComment = await dal.createComment(postId, userId, userName, commentText);
-
-    res.json({ success: true, message: "Comment added successfully", comment: savedComment });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, error: "Failed to add comment" });
-  }
-});
-
-app.get("/post/:id/comments", async (req, res) => {
-  const postId = req.params.id;
-
-  try {
-    const comments = await dal.getCommentsForPost(postId);
-    res.json(comments);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
-app.post("/user/:id/friends/:friendId", async (req, res) => {
-  const userId = req.params.id;
-  const friendId = req.params.friendId;
-
-  try {
-    const user = await dal.getUserById(userId);
-    const friend = await dal.getUserById(friendId);
-
-    if (!user || !friend) {
-      return res.status(404).json({ success: false, error: "User or friend not found" });
-    }
-
-    if (!user.Friends.includes(friendId)) {
-      user.Friends.push(friendId);
-      await user.save();
-      res.json({ success: true });
-    } else {
-      res.json({ success: false, error: "User is already a friend" });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, error: "Failed to establish friendship" });
-  }
-});
-
-app.get("/user/:id/friends/:friendId", async (req, res) => {
-  const userId = req.params.id;
-  const friendId = req.params.friendId;
-
-  try {
-    const user = await dal.getUserById(userId);
-
-    if (!user) {
-      return res.status(404).json({ success: false, error: "User not found" });
-    }
-
-    const isFriend = user.Friends.includes(friendId);
-
-    res.json({ isFriend });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, error: "Failed to check friend status" });
-  }
-});
 
 app.get("/user/:id/notebook", async (req, res) => {
   try {
@@ -353,7 +272,6 @@ app.get("/user/:id/notebook", async (req, res) => {
     res.status(500).json({ error: "Failed to get notebook text" });
   }
 });
-
 
 app.put("/user/:id/notebook", async (req, res) => {
   try {
